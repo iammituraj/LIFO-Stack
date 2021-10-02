@@ -3,11 +3,7 @@ Register-based LIFO aka Stack designed Verilog/System Verilog.
 
 Source codes included
 ---------------------
--- Register-based FIFO
-
--- Block RAM-based FIFO
-
--- Distributed RAM-based FIFO
+-- Register-based LIFO/Stack
 
 Comments
 --------
