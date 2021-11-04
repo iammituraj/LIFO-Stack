@@ -7,7 +7,7 @@
                   - Push and increment / decrement and pop -- pointer mode.
                   - All status signals have zero cycle latency.
                   
-   Developer    : Mitu Raj, iammituraj@gmail.com
+   Developer    : Mitu Raj, chip@chipmunklogic.com at Chipmunk Logic ™, https://chipmunklogic.com
    Date         : Oct-02-2021
 ===============================================================================================================================*/
 
