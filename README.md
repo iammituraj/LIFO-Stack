@@ -1,5 +1,5 @@
 # LIFO-Stack
-Register-based LIFO aka Stack designed Verilog/System Verilog.
+Register-based LIFO aka Stack designed in Verilog/System Verilog.
 
 Source codes included
 ---------------------
