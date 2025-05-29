@@ -12,4 +12,4 @@ All codes are fully synthesizable and tested. All are open-source codes, free to
 
 Developer
 ---------
-Mitu Raj, iammituraj@gmail.com
+Mitu Raj, chip@chipmunklogic.com, iammituraj@gmail.com
