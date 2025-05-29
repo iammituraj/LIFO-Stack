@@ -3,8 +3,9 @@ Stack (LIFO) designed in Verilog/System Verilog.
 
 Source codes included
 ---------------------
--- Stack
--- Call Stack - Special circular-wrapped stack used by CPUs to store the recent N return address of function calls.
+* **Stack** - Simple Last-In-First-Out based stack.
+
+* **Call Stack** - Special circular-wrapped stack used by CPUs to store the recent N return address of function calls.
 
 Comments
 --------
