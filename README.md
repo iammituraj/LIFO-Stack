@@ -1,9 +1,10 @@
-# LIFO-Stack
-Register-based LIFO aka Stack designed in Verilog/System Verilog.
+# Stack
+Stack (LIFO) designed in Verilog/System Verilog.
 
 Source codes included
 ---------------------
--- Register-based LIFO/Stack
+-- Stack
+-- Call Stack - Special circular-wrapped stack used by CPUs to store the recent N return address of function calls.
 
 Comments
 --------
