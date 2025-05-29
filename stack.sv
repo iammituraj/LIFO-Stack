@@ -83,7 +83,7 @@ always_ff @(posedge clk or negedge aresetn) begin
 end
 
 // Write pointer
-assign wr_ptr = pop_en? top_ptr_m1 : top_ptr_ff;  // On simultaneous push & pop, overwrite the top item, instead of writing to next free slot
+assign wr_ptr = pop_en? top_ptr_m1 : top_ptr_ff[PTRW-1:0];  // On simultaneous push & pop, overwrite the top item, instead of writing to next free slot
 
 // Pop data
 assign top_ptr_m1 = top_ptr_ff-1 ;
