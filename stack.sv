@@ -27,7 +27,7 @@
 //----%%
 //----%% Tested on        : Basys-3 Artix-7 FPGA board, Vivado 2019.2 Synthesiser
 //----%% Last modified on : May-2025
-//----%% Notes            : Stack array is mappable to LUT RAM/Block RAM on FPGAs.
+//----%% Notes            : -
 //----%%                  
 //----%% Copyright        : Open-source license, see LICENSE.
 //----%%                                                                                             
