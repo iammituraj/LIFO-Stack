@@ -39,7 +39,7 @@
 // Module definition
 module stack #(
    parameter  DPT   = 4  ,         // Stack depth
-   parameter  DW    = 8  ,         // Data size
+   parameter  DW    = 32 ,         // Data size
    localparam PTRW  = $clog2(DPT)  // Pointer size
 )(
    // Clock and Reset
@@ -96,7 +96,13 @@ assign exc_push_en =  push_en  & !pop_en  ;
 assign exc_pop_en  = !push_en  &  pop_en  ; 
 
 // Full & Empty flags
-assign o_full  = (top_ptr_ff == DPT);
+generate
+if (2**PTRW == DPT)  // 2^N Stack
+   assign o_full  = (top_ptr_ff[PTRW] == 1'b1);
+else
+   assign o_full  = (top_ptr_ff == DPT);
+endgenerate
+
 assign o_empty = (top_ptr_ff == 0);
 
 endmodule
