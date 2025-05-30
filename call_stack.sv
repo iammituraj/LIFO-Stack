@@ -68,7 +68,7 @@ logic [PTRW:0]   count_ff;         // Counter
 logic            push_en, pop_en;  // Conditioned push & pop enable
 logic            exc_push_en, exc_pop_en;  // Exclusive push/pop enable
 
-// Logic to push data
+// Logic to update stack pointer/counter
 always_ff @(posedge clk or negedge aresetn) begin
    // Reset
    if (!aresetn) begin
@@ -77,9 +77,6 @@ always_ff @(posedge clk or negedge aresetn) begin
    end  
    // Out of reset
    else begin
-      // Push to stack
-      if (push_en) stack[wr_ptr] <= i_push_data ;  
-
       // Pointer update on push & pop
       if      (exc_push_en) top_ptr_ff <= top_ptr_ff + 1 ;  // Increment pointer only on exclusive push
       else if (exc_pop_en)  top_ptr_ff <= top_ptr_ff - 1 ;  // Decrement pointer only on exclusive pop
@@ -88,6 +85,12 @@ always_ff @(posedge clk or negedge aresetn) begin
       if      (exc_push_en && !o_full) count_ff <= count_ff + 1 ;  // Counter should not increment once full, even though pushing is still allowed...
       else if (exc_pop_en)             count_ff <= count_ff - 1 ;
    end
+end
+
+// Logic to push data
+// No reset of stack array, for FPGA friendly implementation on LUT RAMs
+always_ff @(posedge clk) begin
+   if (push_en) stack[wr_ptr] <= i_push_data ; 
 end
 
 // Write pointer
