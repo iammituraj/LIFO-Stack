@@ -25,11 +25,11 @@
 //----%%
 //----%% Description      : Call stack is used to store recent N return address of the functions called by the CPU.
 //----%%                    The stack follows LIFO scheme & allows pushing data even after hitting full, by circular wrapping.
-//----%%                    Hence, it always holds recently received N items for depth N.
+//----%%                    Hence, it always holds recently received N items for depth N. The depth is assumed of 2^N order.
 //----%%
 //----%% Tested on        : Basys-3 Artix-7 FPGA board, Vivado 2019.2 Synthesiser
 //----%% Last modified on : May-2025
-//----%% Notes            : Stack array is mappable to LUT RAM/Block RAM on FPGAs.
+//----%% Notes            : -
 //----%%                  
 //----%% Copyright        : Open-source license, see LICENSE.
 //----%%                                                                                             
@@ -40,7 +40,7 @@
 //###################################################################################################################################################
 // Module definition
 module call_stack #(
-   parameter  DPT   = 4  ,         // Stack depth
+   parameter  DPT   = 4  ,         // Stack depth; MUST BE 2^N size
    parameter  DW    = 32 ,         // Data size
    localparam PTRW  = $clog2(DPT)  // Pointer size
 )(
@@ -104,7 +104,7 @@ assign exc_push_en =  push_en & !pop_en  ;
 assign exc_pop_en  = !push_en &  pop_en  ; 
 
 // Full & Empty flags
-assign o_full  = (count_ff == DPT);
+assign o_full  = (count_ff[PTRW] == 1'b1);  // Equivalent to count_ff == DPT; Overflow bit => max count reached...
 assign o_empty = (count_ff == 0);
 
 endmodule
